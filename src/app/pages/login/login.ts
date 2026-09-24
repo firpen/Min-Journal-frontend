@@ -16,16 +16,16 @@ export class Login {
   password = '';
   error = signal('');
 
-  onSubmit(username: string, password: string) {
-    this.authService.login({ username, password }).subscribe({
+  onSubmit() {
+    this.authService.login({ username: this.username, password: this.password }).subscribe({
       next: () => {
         this.router.navigate(['/'])
       },
       error: (err) => {
         this.error.set(err.error);
+        this.username = '';
+        this.password = '';
       },
     });
-    this.username = '';
-    this.password = '';
   }
 }

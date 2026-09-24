@@ -17,16 +17,16 @@ export class Register {
   password = '';
   error = signal('');
 
-  onSubmit(username: string, password: string) {
-    this.authService.register( {username, password} ).subscribe({
+  onSubmit() {
+    this.authService.register( {username: this.username, password: this.password} ).subscribe({
       next: () => {
         this.router.navigate(['/login']);
       },
       error: (err) => {
         this.error.set(err.error);
+        this.username = '';
+        this.password = '';
       }
     });
-    this.username = '';
-    this.password = '';
   }
 }
