@@ -1,0 +1,9 @@
+<h1>Register</h1>
+<form (ngSubmit)="onSubmit(username, password)">
+    <label>Username</label>
+    <input type="text" name="username" [(ngModel)]="username" placeholder="min 3 max 10" required="true" />
+    <label>Password</label>
+    <input type="password" name="password" [(ngModel)]="password" placeholder="min 4 max 64" required="true" />
+    <button type="submit">Register</button>
+    <p>{{ error() }}</p>
+</form>
