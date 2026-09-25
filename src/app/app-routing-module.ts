@@ -3,20 +3,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { Login } from './pages/login/login';
 import { Register } from './pages/register/register';
+import { alreadyLoggedInGuard, authGuard } from './services/auth-guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: Home
+    component: Home,
+    canActivate: [authGuard]
   },
   {
     path: 'login',
-    component: Login
+    component: Login,
+    canActivate: [alreadyLoggedInGuard]
   },
   {
     path: 'register',
-    component: Register
-  }
+    component: Register,
+    canActivate: [alreadyLoggedInGuard]
+  },
 ];
 
 @NgModule({

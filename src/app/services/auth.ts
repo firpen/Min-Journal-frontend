@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { LoginRequest } from '../models/login-request';
 import { Observable } from 'rxjs';
+import { AuthResponse } from '../models/auth-response';
 
 @Injectable({
   providedIn: 'root',
@@ -16,5 +17,9 @@ export class Auth {
 
   register(request: LoginRequest): Observable<unknown> {
     return this.http.post('http://localhost:8080/auth/register', request, { withCredentials: true });
+  }
+
+  auth():Observable<AuthResponse> {
+    return this.http.get<AuthResponse>('http://localhost:8080/auth/user', { withCredentials: true });
   }
 }
