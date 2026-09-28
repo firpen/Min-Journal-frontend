@@ -1,0 +1,22 @@
+<div class="container">
+  <form (ngSubmit)="onUpdate()">
+    <div class="statusContainer">
+      <label required="true">Status:</label>
+      <select name="status" [(ngModel)]="status">
+        <option value="HAPPY">Happy</option>
+        <option value="SAD">Sad</option>
+        <option value="TIRED">Tired</option>
+        <option value="STRESSED">Stressed</option>
+        <option value="CALM">Calm</option>
+        <option value="ANGRY">Angry</option>
+      </select>
+    </div>
+    <div class="noteContainer">
+      <label>Note:</label>
+      <textarea name="note" [(ngModel)]="note" required="true"></textarea>
+    </div>
+    <button type="submit">Update</button>
+  </form>
+  <button (click)="onCancel()">Cancel</button>
+  <p>{{ error() }}</p>
+</div>

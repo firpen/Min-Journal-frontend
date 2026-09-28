@@ -1,0 +1,27 @@
+<div>
+  <div>
+    <label>Notes List:</label>
+    <label>Filter between:</label>
+    <input type="date" name="start" [(ngModel)]="start" (ngModelChange)="onDateChange()" />
+    <input type="date" name="end" [(ngModel)]="end" (ngModelChange)="onDateChange()" />
+  </div>
+  <p>{{ error() }}</p>
+  <ul>
+    @for (note of notes(); track note.id) {
+      <li>
+        <div>
+          <label>{{ note.date }}</label>
+          <label> {{ note.status }}</label>
+        </div>
+        <p>{{ note.noteText }}</p>
+        <div>
+          <button (click)="onUpdate(note.id)">Edit</button>
+          <button (click)="onDelete(note.id)">Delete</button>
+        </div>
+      </li>
+    }
+  </ul>
+  @if (showEdit()) {
+    <app-edit-form [noteId]="selectedId()" (cancel)="showEdit.set(false)" (updated)="loadNotes()"/>
+  }
+</div>
