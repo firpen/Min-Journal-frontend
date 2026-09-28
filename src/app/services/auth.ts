@@ -11,15 +11,16 @@ export class Auth {
 
   private http = inject(HttpClient);
 
-  login(request: LoginRequest): Observable<unknown> {
-    return this.http.post('http://localhost:8080/auth/login', request, { withCredentials: true });
+  login(request: LoginRequest): Observable<void> {
+    return this.http.post<void>('http://localhost:8080/auth/login', request, { withCredentials: true });
   }
 
-  register(request: LoginRequest): Observable<unknown> {
-    return this.http.post('http://localhost:8080/auth/register', request, { withCredentials: true });
+  register(request: LoginRequest): Observable<void> {
+    return this.http.post<void>('http://localhost:8080/auth/register', request, { withCredentials: true });
   }
 
   auth():Observable<AuthResponse> {
     return this.http.get<AuthResponse>('http://localhost:8080/auth/user', { withCredentials: true });
   }
+
 }

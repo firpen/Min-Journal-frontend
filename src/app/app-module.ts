@@ -8,9 +8,12 @@ import { Register } from './pages/register/register';
 import { Login } from './pages/login/login';
 import { FormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
+import { NoteForm } from './components/note-form/note-form';
+import { NoteList } from './components/note-list/note-list';
+import { EditForm } from './components/edit-form/edit-form';
 
 @NgModule({
-  declarations: [App, Home, Register, Login],
+  declarations: [App, Home, Register, Login, NoteForm, NoteList, EditForm],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],
