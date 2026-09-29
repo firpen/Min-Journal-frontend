@@ -1,0 +1,7 @@
+<div class="statsContainer">
+    @for (stat of stats() | keyvalue; track stat.key) {
+      @if (stat.value > 0) {
+        <span>{{ statusEmojie[stat.key] }} {{ stat.value | number: '1.0-0' }} % </span>
+      }
+    }
+</div>

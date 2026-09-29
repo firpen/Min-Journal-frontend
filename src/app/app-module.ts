@@ -11,9 +11,10 @@ import { provideHttpClient } from '@angular/common/http';
 import { NoteForm } from './components/note-form/note-form';
 import { NoteList } from './components/note-list/note-list';
 import { EditForm } from './components/edit-form/edit-form';
+import { Stats } from './components/stats/stats';
 
 @NgModule({
-  declarations: [App, Home, Register, Login, NoteForm, NoteList, EditForm],
+  declarations: [App, Home, Register, Login, NoteForm, NoteList, EditForm, Stats],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],

@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Note } from '../../services/note';
 import { NoteResponse } from '../../models/note-response';
+import { statusEmojie } from '../../models/status-emojies';
 
 @Component({
   selector: 'app-note-list',
@@ -17,6 +18,7 @@ export class NoteList implements OnInit {
   end = signal('');
   selectedId = signal<number | null>(null);
   showEdit = signal(false);
+  statusEmojie = statusEmojie;
 
   ngOnInit() {
     this.loadNotes();
@@ -27,6 +29,7 @@ export class NoteList implements OnInit {
       next: (response) => {
         console.log(response);
         this.notes.set(response);
+        this.showEdit.set(false);
       },
       error: (err) => {
         this.error.set('Failed to load your notes');

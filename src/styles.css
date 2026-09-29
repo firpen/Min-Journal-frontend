@@ -1,1 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
+select {
+  border-radius: 6px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  background-color: #eee3f8;
+}
+
+select:focus {
+  outline: 1px solid black;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+button {
+  border-radius: 5px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  background-color: #7c5cbf;
+  color: rgba(255, 255, 255, 0.938);
+  transition: transform 0.15s ease;
+}
+
+button:hover {
+  background-color: #6a4bab;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+textarea {
+  height: 150px;
+  width: 310px;
+  border: 1px solid rgb(182, 178, 178);
+  border-radius: 10px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  background-color: #f1ebf7;
+}
+
+textarea:focus {
+  outline: 1px solid black;
+}
+
+input {
+  border: 1px solid rgb(182, 178, 178);
+  border-radius: 6px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  background-color: #f1ebf7;
+  transition: transform 0.15s ease;
+}
+
+input:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+input:focus {
+  outline: 1px solid black;
+}

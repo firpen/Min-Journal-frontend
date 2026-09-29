@@ -1,18 +1,22 @@
 <div class="container">
   <form (ngSubmit)="onSubmit()">
     <div class="statusContainer">
-      <label required="true">Status:</label>
-      <select name="status" [(ngModel)]="status">
-        <option value="HAPPY">Happy</option>
-        <option value="SAD">Sad</option>
-        <option value="TIRED">Tired</option>
-        <option value="STRESSED">Stressed</option>
-        <option value="CALM">Calm</option>
-        <option value="ANGRY">Angry</option>
-      </select>
+      <div class="headerContainer">
+        <label>Note:</label>
+        <div class="statusContainer">
+          <label required="true">Status:</label>
+          <select name="status" [(ngModel)]="status">
+            <option value="HAPPY">Happy</option>
+            <option value="SAD">Sad</option>
+            <option value="TIRED">Tired</option>
+            <option value="STRESSED">Stressed</option>
+            <option value="CALM">Calm</option>
+            <option value="ANGRY">Angry</option>
+          </select>
+        </div>
+      </div>
     </div>
     <div class="noteContainer">
-      <label>Note:</label>
       <textarea name="note" [(ngModel)]="note" required="true"></textarea>
     </div>
     <button type="submit">Create</button>
