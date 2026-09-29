@@ -1,0 +1,37 @@
+.container {
+  border: 1px solid rgb(182, 178, 178);
+  border-radius: 10px;
+  width: fit-content;
+  padding: 10px;
+  font-size: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: rgb(197, 137, 247);
+}
+
+.noteContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.noteStatusContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.btnContainer {
+  margin-top: 10px;
+  margin-bottom: -15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container p {
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  color: #ede7f6;
+  margin-top: 25px;
+  margin-bottom: 5px;
+}

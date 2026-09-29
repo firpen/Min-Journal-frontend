@@ -19,8 +19,9 @@ export class Note {
     return this.http.get<NoteResponse[]>('http://localhost:8080/notes', { withCredentials: true });
   }
 
-  getStats(): Observable<StatsResponse> {
+  getStats(start: string, end:string): Observable<StatsResponse> {
     return this.http.get<StatsResponse>('http://localhost:8080/notes/stats', {
+      params: { start, end },
       withCredentials: true,
     });
   }

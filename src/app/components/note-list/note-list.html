@@ -1,27 +1,32 @@
-<div>
-  <div>
-    <label>Notes List:</label>
-    <label>Filter between:</label>
-    <input type="date" name="start" [(ngModel)]="start" (ngModelChange)="onDateChange()" />
-    <input type="date" name="end" [(ngModel)]="end" (ngModelChange)="onDateChange()" />
+<div class="container">
+  <div class="headerContainer">
+    <div class="noteHeader">
+      <label>Notes</label>
+    </div>
+    <div class="inputContainer">
+      <label>Filter between:</label>
+      <input type="date" name="start" [(ngModel)]="start" (ngModelChange)="onDateChange()" />
+      <input type="date" name="end" [(ngModel)]="end" (ngModelChange)="onDateChange()" />
+    </div>
   </div>
   <p>{{ error() }}</p>
   <ul>
     @for (note of notes(); track note.id) {
       <li>
         <div>
-          <label>{{ note.date }}</label>
-          <label> {{ note.status }}</label>
+          <label>{{ note.date | date: "d MMMM y 'klockan' HH:mm" }}</label>
+          <label> {{ statusEmojie[note.status] }}</label>
         </div>
         <p>{{ note.noteText }}</p>
-        <div>
+        <div class="btnContainer">
           <button (click)="onUpdate(note.id)">Edit</button>
           <button (click)="onDelete(note.id)">Delete</button>
         </div>
       </li>
     }
   </ul>
+  <app-stats [start]="start()" [end]="end()"/>
   @if (showEdit()) {
-    <app-edit-form [noteId]="selectedId()" (cancel)="showEdit.set(false)" (updated)="loadNotes()"/>
+    <app-edit-form [noteId]="selectedId()" (cancel)="showEdit.set(false)" (updated)="loadNotes()" />
   }
 </div>

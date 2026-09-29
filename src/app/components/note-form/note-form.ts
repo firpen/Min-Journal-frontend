@@ -26,6 +26,5 @@ export class NoteForm {
         this.error.set('Make sure you selected a status and wrote a note');
       },
     });
-    this.noteService.getStats();
   }
 }

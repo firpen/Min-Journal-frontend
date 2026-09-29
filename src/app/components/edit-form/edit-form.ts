@@ -26,9 +26,11 @@ export class EditForm {
     this.noteService.updateNote(id, {note: this.note, status: this.status}).subscribe({
       next: () => {
         this.updated.emit();
+
       },
       error: (err) => {
         console.log(err)
+        this.error.set('Please choose a status and write a note.')
       }
     })
   }
