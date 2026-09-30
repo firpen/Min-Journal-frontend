@@ -1,59 +1,89 @@
-# MinJournal
+# Min Journal – Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.13.
+Min Journal is a journaling app where users create an account and save short journal entries. Each entry has a free-text note, a status (how you feel) and the date and time it was created.
 
-## Development server
+This repository contains the **Angular frontend**. The backend (Spring Boot + MySQL) lives in a separate repository: [Min-Journal-backend](https://github.com/firpen/Min-Journal-backend). Both are needed to run the app.
 
-To start a local development server, run:
+## Features
 
-```bash
-ng serve
-```
+- **Register and log in.** Login is session based: the backend sets a `JSESSIONID` cookie that the browser sends with every request.
+- **Protected pages.** Route guards send logged-out users to the login page, and logged-in users away from login and register.
+- **Create entries** with a note and one of six statuses: Happy, Sad, Tired, Stressed, Calm and Angry.
+- **History.** All entries are listed with their status as an emoji and the date in Swedish format, e.g. `27 februari 2025 klockan 13:55`.
+- **Filter** the history between a start and an end date.
+- **Edit and delete** entries.
+- **Statistics.** For the selected date range, the percentage of entries per status is shown.
+- **Log out.**
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Tech stack
 
-## Code scaffolding
+- Angular 21 (NgModules, signals, template-driven forms with `ngModel`)
+- TypeScript
+- `HttpClient` for API calls, with `withCredentials: true` so the session cookie is sent
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Requirements
 
-```bash
-ng generate component component-name
-```
+- [Node.js](https://nodejs.org/)
+- Java 21 and a Java IDE (e.g. IntelliJ IDEA or VS Code) for the backend
+- A running MySQL server
+- Git
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Running the project locally
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### 1. Clone both repositories
 
 ```bash
-ng test
+git clone https://github.com/firpen/Min-Journal-frontend.git
+git clone https://github.com/firpen/Min-Journal-backend.git
 ```
 
-## Running end-to-end tests
+### 2. Set up the database
 
-For end-to-end (e2e) testing, run:
+Create an empty MySQL database
+
+The tables are created automatically by the backend on first start.
+
+### 3. Configure the backend
+
+In the root of the backend project (next to `pom.xml`) there is a file called `.env example`. Copy it to a new file named `.env` in the same folder and fill in your own database details:
+
+```
+DB_URL=jdbc:mysql://localhost:3306/your_database_name
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+`.env` is gitignored, so your credentials are never committed.
+
+### 4. Start the backend
+
+Open the backend project in your IDE and run `MinJournalBackendApplication`.
 
 ```bash
-ng e2e
+./mvnw spring-boot:run
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+The backend starts on `http://localhost:8080`.
 
-## Additional Resources
+### 5. Start the frontend
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Open the frontend project in your IDE. In a terminal in the frontend folder, install the dependencies and start the dev server:
+
+```bash
+npm install
+npm start
+```
+
+Open `http://localhost:4200` in your browser, register an account and log in.
+
+> The frontend must run on port **4200** and the backend on port **8080**. The backend only accepts cross-origin requests from `http://localhost:4200`.
+
+## Project structure
+
+```
+src/app/
+  pages/        Route-level pages: home, login, register
+  components/   note-form, note-list, edit-form, stats
+  services/     auth.ts and note.ts (HTTP calls), auth-guard.ts (route guards)
+  models/       TypeScript interfaces for requests and responses
+```
