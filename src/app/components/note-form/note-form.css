@@ -1,10 +1,11 @@
 .container {
-  border: 1px solid rgb(182, 178, 178);
+  border: 1px solid var(--border);
   width: fit-content;
   border-radius: 10px;
   padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow);
   margin: 5px;
+  background-color: var(--surface);
 }
 
 .headerContainer {

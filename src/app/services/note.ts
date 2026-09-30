@@ -42,4 +42,8 @@ export class Note {
   updateNote(id: number, request: NoteRequest): Observable<void> {
     return this.http.put<void>(`http://localhost:8080/notes/${id}`, request, { withCredentials: true });
   }
+
+  logout(): Observable<void> {
+    return this.http.post<void>('http://localhost:8080/auth/logout', null, {withCredentials: true});
+  }
 }

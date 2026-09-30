@@ -1,9 +1,16 @@
-<h1>Login</h1>
-<form (ngSubmit)="onSubmit()">
-    <label>Username</label>
-    <input type="text" name="username" [(ngModel)]="username" required="true" />
-    <label>Password</label>
-    <input type="password" name="password" [(ngModel)]="password" required="true" />
+<div class="container">
+  <h1>Login</h1>
+  <form (ngSubmit)="onSubmit()">
+    <div class="usernameInput">
+      <label>Username</label>
+      <input type="text" name="username" [(ngModel)]="username" required="true" />
+    </div>
+    <div class="passwordInput">
+      <label>Password</label>
+      <input type="password" name="password" [(ngModel)]="password" required="true" />
+    </div>
     <button type="submit">Login</button>
+    <p>Dont have an account yet? <a routerLink="/register">Register here</a></p>
     <p>{{ error() }}</p>
-</form>
+  </form>
+</div>

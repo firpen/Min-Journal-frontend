@@ -1,4 +1,4 @@
-<button>Logout</button>
+<button (click)="onLogout()">Logout</button>
 <div class="container">
   <app-note-form (created)="list.loadNotes()" />
   <app-note-list #list />
