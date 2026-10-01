@@ -1,6 +1,9 @@
 <div class="statsContainer">
+  <!-- | keyvalue är en pipe som gör om statsobjektet till en lista med { key, value } så
+   att @for kan loopa över den. -->
     @for (stat of stats() | keyvalue; track stat.key) {
       @if (stat.value > 0) {
+        <!-- | number: '1.0-0' är en pipe som avrundar värdet till närmaste heltal -->
         <span>{{ statusEmojie[stat.key] }} {{ stat.value | number: '1.0-0' }} % </span>
       }
     }

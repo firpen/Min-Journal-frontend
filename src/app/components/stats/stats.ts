@@ -16,6 +16,9 @@ export class Stats {
   stats = signal<StatsResponse | null>(null);
   statusEmojie = statusEmojie;
 
+  /* Constructor körs en gång när komponenten skapas och skapar effecten.
+   Effecten körs första gången när komponenten renderas (start och end är då tomma)
+   och sedan varje gång signalerna start eller end ändras. */
   constructor() {
     effect(() => {
       this.getStats();
